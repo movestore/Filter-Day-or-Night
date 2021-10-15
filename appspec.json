@@ -1,0 +1,75 @@
+{
+  "settings": [
+    {
+      "id": "window",
+      "name": "Day or night selection",
+      "description": "Select if you want to extract night roosts or day resting/feeding sites or (by default) all rest sites during a 24h period (defined as midnight to 23:59).",
+      "defaultValue": null,
+      "type": "RADIOBUTTONS",
+      "options": [
+		{
+          "value": "sundownup",
+          "displayText": "From sunset to sunrise (night). Timing can be adapted below."
+        },
+		{
+          "value": "sunupdown",
+          "displayText": "From sunrise to sunset (day). Timing can be adapted below."
+        }
+      ]
+    },
+	{
+      "id": "upX",
+      "name": "Sunrise adaption time",
+      "description": "Select how many minutes after (negative numbers if before) sunrise you want to define your interval to start/end.",
+      "defaultValue": 0,
+      "type": "DOUBLE"
+    },
+	{
+      "id": "downX",
+      "name": "Sunset adaption time",
+      "description": "Select how many minutes after (negative numbers if before) sunset you want to define your interval to end/start.",
+      "defaultValue": 0,
+      "type": "DOUBLE"
+    }
+  ],
+  "dependencies": {
+    "R": [
+      {
+        "name": "move"
+      },
+      {
+        "name": "foreach"
+      },
+      {
+        "name": "maptools"
+      }
+    ]
+  },
+  "createsArtifacts": true,
+  "license": {
+    "key": "MIT"
+  },
+  "language": "eng",
+  "keywords": [
+    "filter",
+	"day",
+    "night",
+	"sunrise"
+    "sunset"
+  ],
+  "people": [
+    {
+      "firstName": "Andrea",
+      "middleInitials": null,
+      "lastName": "Kölzsch",
+      "email": "akoelzsch@ab.mpg.de",
+      "roles": ["author", "creator"],
+      "orcid": "0000-0003-0193-1563",
+      "affiliation": "Max-Planck-Institute of Animal Behavior",
+      "affiliationRor": "https://ror.org/026stee22"
+    }
+  ],
+  "documentation" : {
+    "url": "https://github.com/movestore/Filter-Day-or-Night/blob/main/README.md"
+  }
+}
