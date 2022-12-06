@@ -8,9 +8,11 @@ Github repository: *github.com/movestore/Filter-Day-or-Night*
 This App filters the data set to all night or day positions. The locations are given as output and a csv table artefact to download. Sunset and sunrise can be adapted by a selected time interval to define night/day use of your animal(s).
 
 ## Documentation
-This App extracts all night or day positions of the input data set. For this, the sunriset() function from the maptools() package is used. If there are any locations in Arctic/Antarctic regions in times where there is no sunrise and sunset, all locations are retained or deleted, depending on day/night selection. 
+This App extracts all night or day positions of the input data set. For this, the sunriset() function from the maptools() package is used. If there are any locations in Arctic/Antarctic regions in times where there is no sunrise and sunset, all locations are retained or deleted, depending on day/night selection.
 
-Per default local sunrise and sunset are used to define the start/end of day/night. It is possible to adapt those start/end times by adding/subtracting a fixed number of minutes to/from the times of sunrise/sunset.
+It is possible to leave the night/day selection empty. Then all locations are returned with added attributes: time of sunrise, time of sunsest and if it is day or night (daynight) for each location. 
+
+Per default local sunrise and sunset are used to define the start/end of day/night. It is possible to adapt those start/end times by adding/subtracting a fixed number of minutes to/from the times of sunrise/sunset. This also affects the daynight attribute.
 
 ### Input data
 moveStack in Movebank format

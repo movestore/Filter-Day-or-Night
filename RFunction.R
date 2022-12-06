@@ -8,7 +8,7 @@ rFunction <- function(data, window=NULL, upX=0, downX=0)
   
   if (is.null(window)) 
   {
-    logger.info("You have not selected if to extract positions during night or day. Adapt your settings, the App is now returning the full data set.")
+    logger.info("You have not selected if to extract positions during night or day. The App is now returning the full data set with sunriset and day/night as additional attributes.")
   } else
   {
     if (window=="sundownup") 
@@ -30,7 +30,9 @@ rFunction <- function(data, window=NULL, upX=0, downX=0)
       print(namesIndiv(datai))
       sunupx <- data.frame(sunriset(coordinates(datai), timestamps(datai), direction="sunrise", POSIXct.out=TRUE))$time + upX*60
       sundownx <- data.frame(sunriset(coordinates(datai), timestamps(datai), direction="sunset", POSIXct.out=TRUE))$time + downX*60
-      datai@data <- cbind(datai@data,sunupx,sundownx)
+      daynight <- rep("night",length(sunupx)) #add attribute day/night
+      daynight[which(timestamps(datai)>sunupx & timestamps(datai)<sundownx)] <- "day"
+      datai@data <- cbind(datai@data,sunupx,sundownx,daynight)
       
       # there are no sunup or sundown during Arctic summer, then only day positions possible "sunupdown". respectively for Arctic winter
       ix <- which(is.na(sunupx) | is.na(sundownx))
@@ -40,6 +42,8 @@ rFunction <- function(data, window=NULL, upX=0, downX=0)
       ix_AntWin <- ix[coordinates(datai)[ix,2]<(-50) & as.POSIXlt(timestamps(datai[ix,]))$mon %in% c(4:8)]
       ix_AntSum <- ix[coordinates(datai)[ix,2]<(-50) & as.POSIXlt(timestamps(datai[ix,]))$mon %in% c(10:11,0:2)]
       
+      if (length(ix_ArcSum>0) | length(ix_AntSum)>0) datai@data$daynight[c(ix_ArcSum,ix_AntSum)] <- "day" #fill NA daynight for arctic summer/winter
+      if (length(ix_ArcWin>0) | length(ix_AntWin)>0) datai@data$daynight[c(ix_ArcWin,ix_AntWin)] <- "night"
       
       if (is.null(window))
       {
@@ -162,8 +166,8 @@ rFunction <- function(data, window=NULL, upX=0, downX=0)
       data.night.df <- as.data.frame(result)
       data.night.df.nna <- data.night.df[,-which(apply(data.night.df,2,function (x) all(is.na(x))))] #remove columns with all NA
       
-      #write.csv(data.night.df.nna,file = paste0(Sys.getenv(x = "APP_ARTIFACTS_DIR", "/tmp/"),"data_selectedTime_night_day.csv"),row.names=FALSE) #csv artefakt of all night (or day...) positions
-      write.csv(data.night.df.nna,file = "data_selectedTime_night_day.csv",row.names=FALSE)
+      write.csv(data.night.df.nna,file = paste0(Sys.getenv(x = "APP_ARTIFACTS_DIR", "/tmp/"),"data_selectedTime_night_day.csv"),row.names=FALSE) #csv artefakt of all night (or day...) positions
+      #write.csv(data.night.df.nna,file = "data_selectedTime_night_day.csv",row.names=FALSE)
     }
 
   return(result)
