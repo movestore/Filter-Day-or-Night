@@ -164,9 +164,10 @@ rFunction <- function(data, window=NULL, upX=0, downX=0)
     {
       result <- moveStack(data.night.nozero)
       data.night.df <- as.data.frame(result)
-      data.night.df.nna <- data.night.df[,-which(apply(data.night.df,2,function (x) all(is.na(x))))] #remove columns with all NA
+      na.row.ix <- which(apply(data.night.df,2,function (x) all(is.na(x))))
+      if (length(na.row.ix)>0) data.night.df.nna <- data.night.df[,-na.row.ix] else data.night.df.nna <- data.night.df #remove columns with all NA, fix to also work if no na rows exist
       
-      write.csv(data.night.df.nna,file = paste0(Sys.getenv(x = "APP_ARTIFACTS_DIR", "/tmp/"),"data_selectedTime_night_day.csv"),row.names=FALSE) #csv artefakt of all night (or day...) positions
+      write.csv(data.night.df.nna,file = paste0(Sys.getenv(x = "APP_ARTIFACTS_DIR", "/tmp/"),"data_selectedTime_night_day.csv"),row.names=FALSE) #csv artefakt of all night (or day, or all...) positions
       #write.csv(data.night.df.nna,file = "data_selectedTime_night_day.csv",row.names=FALSE)
     }
 
