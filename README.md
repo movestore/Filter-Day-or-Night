@@ -5,7 +5,7 @@ MoveApps
 Github repository: *github.com/movestore/Filter-Day-or-Night*
 
 ## Description
-This App assigns location records as occurring during day or night, and can then filter the dataset to only daytime or nighttime records. The time of sunset and sunrise can be adapted by a user-specified time interval to adjust the day/night assignments, for example to account for the behavior the animal(s) in the dataset. The resulting dataset with added values is provided as output and can be downloaded as a .csv artefact. 
+This App assigns location records as occurring during day or night, and can then filter the dataset to only daytime or nighttime records. The time of sunset and sunrise can be adapted by a user-specified time interval to adjust the day/night assignments, for example to account for the behavior of the animal(s) in the dataset. The resulting dataset with added values is provided as output and can be downloaded as a .csv artefact. 
 
 ## Documentation
 This App calculates the time of sunrise and sunset for the timestamp and location of each record in your dataset, using the sunriset function in the [maptools](https://cran.r-project.org/web/packages/maptools/index.html) package. Based on these results, it then defines each record as "day" or "night", using an optional user-defined adjustment to the sunrise and sunset times, for example, to account for behavioral patterns of the animal(s) in your dataset or local site conditions. All calculations assume that the input data provide timestamp in UTC and locations in the WGS85 coordinate reference system.
