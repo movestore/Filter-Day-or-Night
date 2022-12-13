@@ -3,7 +3,7 @@
     {
       "id": "window",
       "name": "Day or night selection",
-      "description": "Select if you want to extract day or night positions.",
+      "description": "Select if you want to extract day or night positions from your dataset. Leave unselected to retain the full dataset.",
       "defaultValue": null,
       "type": "RADIOBUTTONS",
       "options": [
@@ -20,14 +20,14 @@
 	{
       "id": "upX",
       "name": "Sunrise adaption time",
-      "description": "Select how many minutes after (negative numbers if before) sunrise you want to define your interval to start/end.",
+      "description": "Select how many minutes before (negative values) or after (positive values) sunrise you want to define the transition between night and day.",
       "defaultValue": 0,
       "type": "DOUBLE"
     },
 	{
       "id": "downX",
       "name": "Sunset adaption time",
-      "description": "Select how many minutes after (negative numbers if before) sunset you want to define your interval to end/start.",
+      "description": "Select how many minutes before (negative values) or after (positive values) sunset you want to define the transition between day and night.",
       "defaultValue": 0,
       "type": "DOUBLE"
     }
@@ -52,9 +52,9 @@
   "language": "eng",
   "keywords": [
     "filter",
-	"day",
+	  "day",
     "night",
-	"sunrise"
+	  "sunrise",
     "sunset"
   ],
   "people": [
