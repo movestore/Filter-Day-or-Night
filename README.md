@@ -25,18 +25,18 @@ moveStack in Movebank format
 ### Artefacts
 `data_selectedTime_night_day.csv`: csv file containing the original dataset, filtered for daytime or nighttime location if specified, with the calculated time of sunrise, time of sunset, day/night assignment, year and Julian day, based on the selected settings. Times of local sunrise and sunset are reported in the format `yyyy-MM-dd HH:mm:ss` (UTC).
 
-### Parameters
-`window`: Optional selection to indicate whether to extract only nighttime (between sunset and sunrise, 'sundownup') or daytime (between sunrise and sunset, 'sunupdown') locations, or to retain the full dataset (no selection).
+### Settings
+**Day or night selection (`window`):** Optional selection to indicate whether to extract only nighttime (between sunset and sunrise, 'sundownup') or daytime (between sunrise and sunset, 'sunupdown') locations, or to retain the full dataset (no selection).
 
-`upX`: Sunrise adaption time to define how many minutes before (negative values) or after (positive values) sunrise you want to define the transition between night and day. This is 0 by default.
+**Sunrise adaption time (`upX`):** Sunrise adaption time to define how many minutes before (negative values) or after (positive values) sunrise you want to define the transition between night and day. This is 0 by default.
 
-`downX`: Sunset adaption time how many minutes before (negative values) or after (positive values) sunset you want to define the transition between day and night. This is 0 by default.
+**Sunset adaption time (`downX`):** Sunset adaption time how many minutes before (negative values) or after (positive values) sunset you want to define the transition between day and night. This is 0 by default.
 
 ### Null or error handling:
-**Parameter `window`:** The default value (NULL, i.e., no selection of radio button) will return the input data set.
+**Setting `window`:** The default value (NULL, i.e., no selection of radio button) will return the input data set.
 
-**Parameter `upX`:** The default value here is '0', indicating that no adaption time is necessary. If the value gets too large, the calculations might become difficult to understand.
+**Setting `upX`:** The default value here is '0', indicating that no adaption time is necessary. If the value gets too large, the calculations might become difficult to understand.
 
-**Parameter `downX`:** The default value here is '0', indicating that no adaption time is necessary. If the value gets too large, the calculations might become difficult to understand.
+**Setting `downX`:** The default value here is '0', indicating that no adaption time is necessary. If the value gets too large, the calculations might become difficult to understand.
 
 **Data:** If there are no day/night locations in the dataset, NULL is returned, likely leading to an error.
