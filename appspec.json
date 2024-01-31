@@ -3,7 +3,7 @@
     {
       "id": "window",
       "name": "Day or night selection",
-      "description": "Select if you want to extract day or night positions from your dataset. Leave unselected to retain the full dataset.",
+      "description": "Select if you want to extract day or night positions from your dataset. Leave unselected to retain the full dataset with day/night annotations.",
       "defaultValue": null,
       "type": "RADIOBUTTONS",
       "options": [
@@ -35,13 +35,16 @@
   "dependencies": {
     "R": [
       {
-        "name": "move"
+        "name": "move2"
       },
       {
         "name": "foreach"
       },
       {
-        "name": "maptools"
+        "name": "suncalc"
+      },
+      {
+        "name": "sf"
       }
     ]
   },
@@ -55,7 +58,8 @@
 	  "day",
     "night",
 	  "sunrise",
-    "sunset"
+    "sunset",
+	"suncalc"
   ],
   "people": [
     {
