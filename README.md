@@ -1,4 +1,4 @@
-# Filter Day or Night
+# Filter/Annotate Day or Night
 
 MoveApps
 
@@ -8,7 +8,7 @@ Github repository: *github.com/movestore/Filter-Day-or-Night*
 This App assigns location records as occurring during day or night, and can then filter the dataset to only daytime or nighttime records. The time of sunset and sunrise can be adapted by a user-specified time interval to adjust the day/night assignments, for example to account for the behavior of the animal(s) in the dataset. The resulting dataset with added values is provided as output and can be downloaded as a .csv artefact. 
 
 ## Documentation
-This App calculates the time of sunrise and sunset for the timestamp and location of each record in your dataset, using the sunriset function in the [maptools](https://cran.r-project.org/web/packages/maptools/index.html) package. Based on these results, it then defines each record as "day" or "night", using an optional user-defined adjustment to the sunrise and sunset times, for example, to account for behavioral patterns of the animal(s) in your dataset or local site conditions. All calculations assume that the input data provide timestamp in UTC and locations in the WGS85 coordinate reference system.
+This App calculates the time of sunrise and sunset for the timestamp and location of each record in your dataset, using the getSunlightTimes function in the [suncalc](https://cran.r-project.org/web/packages/suncalc/index.html) package. Based on these results, it then defines each record as "day" or "night", using an optional user-defined adjustment to the sunrise and sunset times, for example, to account for behavioral patterns of the animal(s) in your dataset or local site conditions. All calculations assume that the input data provide timestamp in UTC and locations in the WGS85 coordinate reference system.
 
 By default, the start and end of day and night are defined by the time of local sunrise and sunset. Optionally, adaptation times can be defined in the settings to adjust the time of sunrise and/or sunset by a fixed number of minutes. This adjustment will affect the reported sunrise and sunset times, as well as the day/night assignment.
 
@@ -17,10 +17,10 @@ You can choose to extract only daytime or nighttime locations from the dataset, 
 Note that if the dataset contains records at high latitudes (Arctic/Antarctic) during periods when there are no sunrise and sunset, it is possible that all locations will be retained or deleted, depending on settings.
 
 ### Input data
-moveStack in Movebank format
+move2 location object
 
 ### Output data
-moveStack in Movebank format
+move2 location object
 
 ### Artefacts
 `data_selectedTime_night_day.csv`: csv file containing the original dataset, filtered for daytime or nighttime location if specified, with the calculated time of sunrise, time of sunset, day/night assignment, year and Julian day, based on the selected settings. Times of local sunrise and sunset are reported in the format `yyyy-MM-dd HH:mm:ss` (UTC).
