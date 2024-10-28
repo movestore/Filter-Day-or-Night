@@ -171,10 +171,12 @@ rFunction <- function(data, window=NULL, upX=0, downX=0)
     if (length(data.night.nozero)==0) 
     {
       logger.info("Your data contain no night/day positions. No csv overview saved.")
-      result <- mt_stack(data.night.nozero,.track_combine="rename")
+      result_sk <- mt_stack(data.night.nozero,.track_combine="rename")
+      result <- result_sk |> dplyr::arrange(mt_track_id(result_sk),mt_time(result_sk)) ## for some reason at some point sometimes data get unsorted
     } else 
     {
-      result <- mt_stack(data.night.nozero,.track_combine="rename")
+      result_sk <- mt_stack(data.night.nozero,.track_combine="rename")
+      result <- result_sk |> dplyr::arrange(mt_track_id(result_sk),mt_time(result_sk)) ## for some reason at some point sometimes data get unsorted
       data.night.df <- as.data.frame(result)
       na.row.ix <- which(apply(data.night.df,2,function (x) all(is.na(x))))
       if (length(na.row.ix)>0) data.night.df.nna <- data.night.df[,-na.row.ix] else data.night.df.nna <- data.night.df #remove columns with all NA, fix to also work if no na rows exist
