@@ -1,37 +1,34 @@
 {
+"version": "1.2",
   "settings": [
     {
       "id": "window",
       "name": "Day or night selection",
       "description": "Select if you want to extract day or night positions from your dataset. Leave unselected to retain the full dataset with day/night annotations.",
-      "defaultValue": null,
       "type": "RADIOBUTTONS",
-      "options": [
-		{
+      "options": [{
           "value": "sundownup",
           "displayText": "From sunset to sunrise (night). Timing can be adapted below."
         },
-		{
+	{
           "value": "sunupdown",
           "displayText": "From sunrise to sunset (day). Timing can be adapted below."
-        }
-      ]
+        }]
     },
-	{
+    {
       "id": "upX",
       "name": "Sunrise adaption time",
       "description": "Select how many minutes before (negative values) or after (positive values) sunrise you want to define the transition between night and day.",
       "defaultValue": 0,
       "type": "DOUBLE"
     },
-	{
+    {
       "id": "downX",
       "name": "Sunset adaption time",
       "description": "Select how many minutes before (negative values) or after (positive values) sunset you want to define the transition between day and night.",
       "defaultValue": 0,
       "type": "DOUBLE"
-    }
-  ],
+    }],
   "dependencies": {
     "R": [
       {
@@ -48,7 +45,6 @@
       }
     ]
   },
-  "createsArtifacts": true,
   "license": {
     "key": "MIT"
   },
@@ -72,8 +68,5 @@
       "affiliation": "Max-Planck-Institute of Animal Behavior",
       "affiliationRor": "https://ror.org/026stee22"
     }
-  ],
-  "documentation" : {
-    "url": "https://github.com/movestore/Filter-Day-or-Night/blob/main/README.md"
-  }
+  ]
 }
